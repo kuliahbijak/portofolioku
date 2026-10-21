@@ -1,0 +1,104 @@
+/* Sumber CSS (Tailwind). Hasil build: css/app.css — dipakai bersama oleh index.html & admin.html. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --c-brand: 37 99 235;        /* #2563EB — bisa diganti dari Pengaturan → Warna utama */
+    --c-brand-dark: 29 78 216;   /* #1D4ED8 */
+    --c-bright: 59 155 255;      /* #3B9BFF — aksen dekoratif */
+    --c-band: 31 116 219;        /* #1F74DB — pita kontak (kontras AA untuk teks putih) */
+    --hdr: 7.5rem;
+  }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+  body { @apply bg-surface-white font-sans text-body-md text-on-surface antialiased; overscroll-behavior-y: none; }
+  section[id], [data-anchor] { scroll-margin-top: var(--hdr); }
+  img { -webkit-user-drag: none; }
+  :focus-visible { outline: 3px solid rgb(var(--c-brand) / 0.55); outline-offset: 2px; border-radius: 8px; }
+  button, [role="button"] { touch-action: manipulation; }
+  [hidden] { display: none !important; }
+}
+
+@layer components {
+  /* Ikon Material Symbols — lebar tetap 1em agar tidak menggeser tata letak saat font dimuat */
+  .ms {
+    font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; font-size: 24px;
+    line-height: 1; letter-spacing: normal; text-transform: none; white-space: nowrap; word-wrap: normal; direction: ltr;
+    display: inline-block; width: 1em; height: 1em; overflow: hidden; flex-shrink: 0; vertical-align: middle;
+    font-feature-settings: 'liga'; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; user-select: none;
+  }
+  .ms-fill { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+  .wrap { @apply max-w-content mx-auto px-margin-mobile lg:px-margin; }
+  .badge-sec { @apply inline-block font-label-caps text-label-caps uppercase tracking-wider px-space-md py-1 rounded-full mb-space-xs; }
+  .card { @apply bg-surface-white rounded-card shadow-card; }
+  .card-lift { @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lift; }
+  .btn { @apply inline-flex items-center justify-center gap-space-sm font-label-ui text-label-ui font-semibold rounded-full transition-all duration-200 select-none whitespace-nowrap disabled:opacity-60 disabled:pointer-events-none; }
+  .btn-primary { @apply btn bg-brand-blue text-surface-white px-space-xl py-3.5 shadow-blue hover:bg-primary hover:-translate-y-0.5; }
+  .btn-light { @apply btn bg-surface-white text-brand-blue px-space-xl py-3.5 shadow-pill hover:bg-light-blue-tint; }
+  .btn-yellow { @apply btn bg-yellow-accent text-brand-navy font-bold shadow-yellow hover:bg-yellow-hover; }
+  .btn-navy { @apply btn bg-brand-navy text-surface-white hover:bg-brand-blue; }
+  .btn-ghost { @apply btn text-brand-blue hover:bg-light-blue-tint; }
+  .btn-sm { @apply px-4 py-2 text-[13px]; }
+  .circle-arrow { @apply w-12 h-12 rounded-full bg-yellow-accent hover:bg-yellow-hover text-brand-navy flex items-center justify-center shadow-md transition-transform; }
+  .chip { @apply font-label-ui text-label-ui px-space-md py-1.5 rounded-full transition-colors whitespace-nowrap; }
+  .chip-on { @apply bg-brand-navy text-surface-white font-semibold; }
+  .chip-off { @apply bg-surface-white text-text-secondary hover:text-brand-navy; }
+  .pill-on { @apply bg-brand-blue text-surface-white font-semibold shadow-sm; }
+  .pill-off { @apply text-text-secondary hover:text-brand-navy; }
+  .field { @apply w-full bg-input-bg border-[1.5px] border-border-subtle rounded-full font-body-sm text-body-sm text-brand-navy transition-all placeholder:text-outline; }
+  .field:focus { @apply bg-surface-white border-brand-blue outline-none; box-shadow: 0 0 0 3px rgb(var(--c-brand) / 0.15); }
+  .field.is-invalid { @apply border-error; box-shadow: 0 0 0 3px rgba(186, 26, 26, 0.12); }
+
+  /* Skeleton shimmer */
+  .sk { background: linear-gradient(90deg, #eaf0f8 25%, #f5f8fd 37%, #eaf0f8 63%); background-size: 400% 100%; animation: sk 1.3s ease infinite; border-radius: 0.75rem; }
+  .sk-dark { background: linear-gradient(90deg, rgba(255,255,255,.12) 25%, rgba(255,255,255,.22) 37%, rgba(255,255,255,.12) 63%); background-size: 400% 100%; animation: sk 1.3s ease infinite; border-radius: .5rem; }
+
+  /* Muncul saat digulir */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0ms); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  .hide-scrollbar { scrollbar-width: none; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .snap-track { display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; overscroll-behavior-x: contain; padding: 0.5rem 0.25rem 1.25rem; margin: -0.5rem -0.25rem 0; }
+  .snap-track > * { scroll-snap-align: start; flex: 0 0 auto; }
+  .snap-track.is-grid { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); overflow: visible; }
+  @media (min-width: 768px) { .snap-track.is-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1024px) { .snap-track.is-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .snap-track.is-grid > * { width: auto !important; }
+
+  .blob { border-radius: 55% 45% 65% 35% / 40% 60% 40% 60%; }
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* Dialog / modal */
+  .dlg { @apply p-0 rounded-[24px] shadow-float border-0 w-[min(560px,calc(100vw-2rem))] max-h-[calc(100dvh-2rem)] bg-surface-white text-on-surface; }
+  .dlg::backdrop { background: rgba(11, 31, 58, 0.45); backdrop-filter: blur(3px); }
+  .dlg[open] { animation: dlg-in .18s ease-out; }
+
+  /* Bilah progres atas (gerbang admin, simpan) */
+  .topbar { position: fixed; top: 0; left: 0; height: 3px; width: 100%; z-index: 100; background: linear-gradient(90deg, rgb(var(--c-brand)), #FFC300); transform-origin: left; animation: topbar 1.2s ease-in-out infinite; }
+
+  /* Toast */
+  .toast { @apply fixed left-1/2 bottom-6 z-[120] -translate-x-1/2 flex items-center gap-2 px-4 py-3 rounded-2xl shadow-float font-label-ui text-label-ui max-w-[calc(100vw-2rem)]; animation: toast-in .2s ease-out; }
+}
+
+@keyframes sk { 0% { background-position: 100% 50%; } 100% { background-position: 0 50%; } }
+@keyframes dlg-in { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes topbar { 0% { transform: scaleX(0); opacity: 1; } 70% { transform: scaleX(.85); opacity: 1; } 100% { transform: scaleX(1); opacity: 0; } }
+@keyframes toast-in { from { opacity: 0; transform: translate(-50%, 8px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 0.9s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+  .snap-track { scroll-behavior: auto; }
+}
+@media print {
+  header, footer, #kontak form, .no-print { display: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}

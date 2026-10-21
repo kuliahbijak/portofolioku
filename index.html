@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src https://script.google.com https://script.googleusercontent.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Fajar — UI/UX Designer &amp; Web Developer</title>
+<meta name="description" content="Portofolio Fajar: desain UI/UX, frontend, dan otomatisasi Google Apps Script untuk bisnis digital.">
+<!-- Pratinjau tautan (WhatsApp/LinkedIn) membaca tag statis ini — ubah sesuai profil Anda -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fajar — UI/UX Designer &amp; Web Developer">
+<meta property="og:description" content="Membantu bisnis bertumbuh lewat desain &amp; web yang berdampak.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1F3A">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://script.google.com" crossorigin>
+<link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&amp;icon_names=account_circle,account_tree,add,admin_panel_settings,ads_click,alternate_email,analytics,animation,api,apps,arrow_back,arrow_downward,arrow_forward,arrow_outward,arrow_upward,article,autorenew,backup,bar_chart,block,bolt,brush,build,cached,calendar_today,call,campaign,chat,check_circle,chevron_left,chevron_right,close,cloud_done,cloud_off,cloud_sync,code,construction,contact_page,content_copy,dashboard,data_object,database,delete,description,design_services,devices,download,draw,edit,error,extension,favorite,folder,format_quote,forum,functions,gate,gif,grid_view,group,groups,handshake,help,hourglass_top,hov,hub,inbox,info,input,integration_instructions,interests,key,label,language,layers,lightbulb,link,location_on,lock,lock_open,lock_reset,login,logout,mail,mark_email_read,mark_email_unread,memory,menu,mobile,move_up,movie,music_note,notifications,open_in_new,palette,password,payments,person,photo_camera,picture_as_pdf,pill,play_circle,progress_activity,psychology,public,radio,record_voice_over,refresh,reply,resize,rocket_launch,rss_feed,save,scan,schedule,school,script,sd,search,security,send,settings,share,shield,shopping_cart,smart_toy,speed,star,start,storage,storefront,switch,sync,table_chart,table_view,tablet,target,terminal,touch_app,translate,travel_explore,trending_down,trending_up,upload,verified,video_library,visibility,visibility_off,vpn_key,warning,web,wifi_off,work&amp;display=block">
+<link rel="stylesheet" href="css/app.css?v=1.0.0">
+<script src="js/config.js?v=1.0.0" defer></script>
+<script src="js/core.js?v=1.0.0" defer></script>
+<script src="js/app.js?v=1.0.0" defer></script>
+</head>
+<body class="bg-surface-white">
+<a href="#beranda" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] btn-yellow btn-sm">Lewati ke konten</a>
+
+<!-- ============ HEADER (F1 info bar + F2 navigasi) ============ -->
+<header id="hdr" class="fixed top-0 left-0 right-0 z-50">
+  <div id="infobar" class="bg-brand-navy text-surface-white">
+    <div class="wrap flex items-center justify-between h-10 font-caption text-caption gap-3">
+      <div class="flex items-center gap-space-lg min-w-0" id="ib-left">
+        <span class="sk-dark h-3 w-36"></span>
+      </div>
+      <div class="flex items-center gap-space-lg" id="ib-right"></div>
+    </div>
+  </div>
+  <div class="bg-surface-white/90 backdrop-blur-xl shadow-nav">
+    <div class="wrap h-20 flex items-center justify-between gap-4">
+      <a href="#beranda" class="flex items-center gap-space-sm shrink-0" data-nav="beranda" aria-label="Kembali ke atas">
+        <span id="logo-mark" class="w-9 h-9 rounded-xl bg-brand-blue text-surface-white flex items-center justify-center font-extrabold text-[18px] relative" aria-hidden="true">F<span class="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-yellow-accent ring-2 ring-surface-white"></span></span>
+        <span id="logo-name" class="font-headline-sm text-headline-sm text-brand-navy tracking-tight">&nbsp;</span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-space-xl" aria-label="Navigasi utama">
+        <a href="#beranda" data-nav="beranda" class="nav-link font-label-ui text-label-ui text-on-surface-variant hover:text-on-surface transition-colors">Home</a>
+        <a href="#tentang" data-nav="tentang" class="nav-link font-label-ui text-label-ui text-on-surface-variant hover:text-on-surface transition-colors">About</a>
+        <a href="#keahlian" data-nav="keahlian" class="nav-link font-label-ui text-label-ui text-on-surface-variant hover:text-on-surface transition-colors">Skills</a>
+        <a href="#portofolio" data-nav="portofolio" class="nav-link font-label-ui text-label-ui text-on-surface-variant hover:text-on-surface transition-colors">Portfolio</a>
+        <a href="#kontak" data-nav="kontak" class="nav-link font-label-ui text-label-ui text-on-surface-variant hover:text-on-surface transition-colors">Contact</a>
+      </nav>
+      <div class="flex items-center gap-space-md">
+        <a href="#kontak" class="btn-yellow px-space-lg py-space-sm hidden sm:inline-flex" data-trk="klik_cta" data-t="hubungi_saya_nav">Hubungi Saya</a>
+        <img id="hdr-avatar" alt="" class="w-8 h-8 rounded-full object-cover bg-light-blue-tint hidden sm:block" width="32" height="32" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
+        <button id="menu-btn" type="button" class="lg:hidden p-space-xs text-brand-navy rounded-lg" aria-label="Buka menu" aria-expanded="false" aria-controls="mnav">
+          <span class="ms text-[28px]">menu</span>
+        </button>
+      </div>
+    </div>
+    <!-- Menu ponsel -->
+    <div id="mnav" class="lg:hidden hidden border-t border-border-subtle bg-surface-white">
+      <nav class="wrap py-3 flex flex-col" aria-label="Navigasi ponsel">
+        <a href="#beranda" data-nav="beranda" class="nav-link py-3 font-label-ui text-[16px] text-brand-navy">Home</a>
+        <a href="#tentang" data-nav="tentang" class="nav-link py-3 font-label-ui text-[16px] text-brand-navy">About</a>
+        <a href="#keahlian" data-nav="keahlian" class="nav-link py-3 font-label-ui text-[16px] text-brand-navy">Skills</a>
+        <a href="#portofolio" data-nav="portofolio" class="nav-link py-3 font-label-ui text-[16px] text-brand-navy">Portfolio</a>
+        <a href="#kontak" data-nav="kontak" class="nav-link py-3 font-label-ui text-[16px] text-brand-navy">Contact</a>
+        <a href="#kontak" class="btn-yellow py-3 mt-2" data-trk="klik_cta" data-t="hubungi_saya_menu">Hubungi Saya</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div id="cfg-warn" hidden class="fixed bottom-4 left-4 right-4 z-[90] mx-auto max-w-xl bg-yellow-accent text-brand-navy rounded-2xl shadow-float p-4 font-label-ui text-label-ui"></div>
+
+<main id="main" class="w-full pt-[var(--hdr)] min-h-screen">
+  <!-- ============ F3 HERO ============ -->
+  <section id="beranda" class="relative w-full bg-gradient-to-b from-light-blue-tint via-surface-white to-surface-white overflow-hidden py-space-2xl lg:py-space-3xl" aria-label="Beranda">
+    <div class="absolute -top-32 -left-20 w-96 h-96 bg-bright-blue/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-yellow-accent/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <div class="wrap relative">
+      <div id="hero" class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl items-center">
+        <div class="lg:col-span-7 flex flex-col items-start gap-4" aria-hidden="true">
+          <span class="sk h-8 w-64 rounded-full"></span>
+          <span class="sk h-12 w-full max-w-xl"></span>
+          <span class="sk h-12 w-4/5 max-w-lg"></span>
+          <span class="sk h-12 w-3/5 max-w-md"></span>
+          <span class="sk h-5 w-full max-w-xl mt-2"></span>
+          <span class="sk h-5 w-4/5 max-w-lg"></span>
+          <div class="flex gap-3 mt-4"><span class="sk h-12 w-44 rounded-full"></span><span class="sk h-12 w-40 rounded-full"></span></div>
+        </div>
+        <div class="lg:col-span-5 flex justify-center" aria-hidden="true">
+          <span class="sk w-[300px] h-[340px] sm:w-[370px] sm:h-[420px] rounded-[2.5rem]"></span>
+        </div>
+      </div>
+      <div id="load-err" hidden class="mt-8 card p-5 flex flex-col sm:flex-row sm:items-center gap-3 justify-between">
+        <div class="flex items-center gap-3 text-brand-navy"><span class="ms text-error">cloud_off</span><span id="load-err-msg" class="font-label-ui text-label-ui">Konten belum bisa dimuat.</span></div>
+        <button id="load-retry" type="button" class="btn-primary btn-sm">Coba lagi</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ F4 ABOUT ============ -->
+  <section id="tentang" class="w-full bg-warm-cream py-space-2xl lg:py-space-3xl relative" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="flex flex-col items-start mb-space-xl lg:mb-space-2xl">
+        <span class="badge-sec bg-yellow-accent/25 text-tertiary">Tentang</span>
+        <div class="relative">
+          <h2 id="about-h" class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-brand-navy">Tentang Saya</h2>
+          <svg class="w-24 h-3 text-brand-blue -mt-1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="3" viewBox="0 0 100 12" aria-hidden="true"><path d="M3 8 C30 2, 70 2, 97 7"/></svg>
+        </div>
+      </div>
+      <div id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl items-start">
+        <div class="lg:col-span-5 space-y-3" aria-hidden="true"><span class="sk h-4 w-full block"></span><span class="sk h-4 w-11/12 block"></span><span class="sk h-4 w-10/12 block"></span><span class="sk h-4 w-full block"></span><span class="sk h-28 w-full block mt-6 rounded-card"></span></div>
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-space-lg" aria-hidden="true"><span class="sk h-44 rounded-card"></span><span class="sk h-44 rounded-card"></span><span class="sk h-44 rounded-card"></span><span class="sk h-44 rounded-card"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ F5 SKILLS ============ -->
+  <section id="keahlian" class="w-full bg-light-blue-tint py-space-2xl lg:py-space-3xl" aria-labelledby="skills-h">
+    <div class="wrap">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg mb-space-xl lg:mb-space-2xl">
+        <div>
+          <span class="badge-sec bg-brand-blue/15 text-brand-blue">Keahlian</span>
+          <h2 id="skills-h" class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-brand-navy">Keahlian Saya</h2>
+        </div>
+        <div id="skill-filters" class="flex flex-nowrap items-center gap-space-xs bg-surface-white p-1.5 rounded-full shadow-sm self-start md:self-auto max-w-full overflow-x-auto hide-scrollbar" role="group" aria-label="Filter keahlian"></div>
+      </div>
+      <div id="skills" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-space-lg">
+        <span class="sk h-48 rounded-card"></span><span class="sk h-48 rounded-card"></span><span class="sk h-48 rounded-card hidden sm:block"></span><span class="sk h-48 rounded-card hidden lg:block"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ F6 PORTFOLIO ============ -->
+  <section id="portofolio" class="w-full bg-warm-cream py-space-2xl lg:py-space-3xl relative" aria-labelledby="port-h">
+    <div class="wrap">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-end mb-space-xl lg:mb-space-2xl">
+        <div class="lg:col-span-8">
+          <span class="badge-sec bg-yellow-accent/25 text-tertiary">Karya Pilihan</span>
+          <h2 id="port-h" class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-brand-navy">Karya terbaru</h2>
+          <p id="port-sub" class="font-body-md text-body-md text-text-secondary mt-space-xs max-w-xl"></p>
+        </div>
+        <div class="lg:col-span-4 flex lg:justify-end gap-2">
+          <button id="port-all" type="button" class="btn bg-surface-white text-brand-navy px-space-lg py-3 shadow-pill hover:text-brand-blue hover:bg-light-blue-tint" aria-pressed="false">
+            <span>Lihat Semua Proyek</span><span class="ms text-[18px]">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+      <div class="flex items-center justify-between gap-3 mb-space-lg">
+        <div id="port-chips" class="flex items-center gap-space-xs overflow-x-auto hide-scrollbar pb-1" role="group" aria-label="Filter kategori proyek"></div>
+        <div id="port-arrows" class="hidden md:flex items-center gap-2 shrink-0">
+          <button type="button" data-dir="-1" class="w-10 h-10 rounded-full bg-surface-white shadow-pill text-brand-navy hover:text-brand-blue flex items-center justify-center" aria-label="Proyek sebelumnya"><span class="ms">chevron_left</span></button>
+          <button type="button" data-dir="1" class="w-10 h-10 rounded-full bg-surface-white shadow-pill text-brand-navy hover:text-brand-blue flex items-center justify-center" aria-label="Proyek berikutnya"><span class="ms">chevron_right</span></button>
+        </div>
+      </div>
+      <div id="port-track" class="snap-track hide-scrollbar" aria-live="polite">
+        <span class="sk h-[420px] w-[85%] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] rounded-card"></span>
+        <span class="sk h-[420px] w-[85%] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] rounded-card"></span>
+        <span class="sk h-[420px] w-[85%] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] rounded-card"></span>
+      </div>
+      <div id="port-dots" class="flex items-center justify-center gap-2 mt-space-xl" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ F7 TESTIMONI (opsional) ============ -->
+  <section id="testimoni" hidden class="w-full bg-surface-white py-space-2xl lg:py-space-3xl relative" aria-labelledby="testi-h">
+    <div class="wrap">
+      <div class="text-center max-w-2xl mx-auto mb-space-xl lg:mb-space-2xl">
+        <span class="badge-sec bg-brand-blue/10 text-brand-blue">Testimoni</span>
+        <h2 id="testi-h" class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-brand-navy"></h2>
+        <p id="testi-sub" class="font-body-md text-body-md text-text-secondary mt-space-xs"></p>
+      </div>
+      <div id="testi-track" class="snap-track hide-scrollbar"></div>
+      <div id="testi-arrows" class="flex items-center justify-center gap-3 mt-space-lg">
+        <button type="button" data-dir="-1" class="w-11 h-11 rounded-full bg-light-blue-tint text-brand-navy hover:bg-brand-blue hover:text-surface-white flex items-center justify-center transition-colors" aria-label="Testimoni sebelumnya"><span class="ms">arrow_back</span></button>
+        <button type="button" data-dir="1" class="w-11 h-11 rounded-full bg-yellow-accent text-brand-navy hover:bg-yellow-hover flex items-center justify-center transition-colors" aria-label="Testimoni berikutnya"><span class="ms">arrow_forward</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ F8 CONTACT ============ -->
+  <section id="kontak" class="w-full bg-band-blue py-space-2xl lg:py-space-3xl relative overflow-hidden" aria-labelledby="contact-h">
+    <div class="absolute -top-12 -right-12 w-64 h-64 bg-surface-white/10 rounded-full blur-2xl pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute -bottom-20 -left-12 w-80 h-80 bg-bright-blue/40 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <svg class="absolute top-8 left-1/4 w-6 h-6 text-surface-white/40 pointer-events-none" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0L14.5 8.5L23 11L14.5 13.5L12 22L9.5 13.5L1 11L9.5 8.5L12 0Z"/></svg>
+    <svg class="absolute bottom-12 right-1/3 w-4 h-4 text-surface-white/30 pointer-events-none" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0L14.5 8.5L23 11L14.5 13.5L12 22L9.5 13.5L1 11L9.5 8.5L12 0Z"/></svg>
+    <div class="wrap relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl items-center">
+        <div class="lg:col-span-5 text-surface-white">
+          <div class="inline-flex items-center gap-space-md bg-yellow-accent text-brand-navy p-space-md rounded-card shadow-lg mb-space-xl -rotate-1 hover:rotate-0 transition-transform">
+            <div class="w-12 h-12 rounded-xl bg-brand-navy text-yellow-accent flex items-center justify-center shrink-0"><span class="ms text-[28px]">mark_email_unread</span></div>
+            <div>
+              <span id="contact-note" class="font-hand text-[22px] font-bold leading-tight block">&nbsp;</span>
+              <span id="contact-status" class="font-caption text-caption text-brand-navy/80 font-semibold">&nbsp;</span>
+            </div>
+          </div>
+          <h2 id="contact-h" class="text-headline-lg-mobile lg:text-headline-lg font-extrabold uppercase tracking-tight leading-tight mb-space-md">Punya Proyek atau Peluang Kerja Sama?</h2>
+          <p id="contact-desc" class="font-body-lg text-body-lg text-surface-white/90 leading-relaxed mb-space-xl"></p>
+          <div id="contact-links" class="flex flex-wrap items-center gap-space-sm"></div>
+        </div>
+        <div class="lg:col-span-7">
+          <div class="bg-surface-white rounded-[24px] p-space-lg sm:p-space-2xl shadow-[0_20px_50px_rgba(11,31,58,0.2)]">
+            <form id="contact-form" class="space-y-space-md" novalidate autocomplete="on">
+              <div>
+                <label class="block font-label-ui text-label-ui font-bold text-brand-navy mb-1.5" for="c-nama">Nama Lengkap *</label>
+                <div class="relative">
+                  <span class="ms absolute left-4 top-3 text-text-secondary text-[20px]">person</span>
+                  <input id="c-nama" name="nama" type="text" class="field pl-12 pr-4 py-3" placeholder="Contoh: Raditya Pratama" required maxlength="80" autocomplete="name">
+                </div>
+              </div>
+              <div>
+                <label class="block font-label-ui text-label-ui font-bold text-brand-navy mb-1.5" for="c-email">Alamat Email *</label>
+                <div class="relative">
+                  <span class="ms absolute left-4 top-3 text-text-secondary text-[20px]">mail</span>
+                  <input id="c-email" name="email" type="email" inputmode="email" class="field pl-12 pr-4 py-3" placeholder="nama@perusahaan.com" required maxlength="120" autocomplete="email">
+                </div>
+              </div>
+              <div>
+                <label class="block font-label-ui text-label-ui font-bold text-brand-navy mb-1.5" for="c-pesan">Pesan atau Rencana Proyek *</label>
+                <textarea id="c-pesan" name="pesan" class="field !rounded-2xl p-4" rows="4" maxlength="1000" required placeholder="Ceritakan detail proyek, jangka waktu, dan target yang ingin dicapai..."></textarea>
+                <div class="flex justify-between items-center mt-1">
+                  <span class="font-caption text-caption text-text-secondary">Maksimum 1.000 karakter</span>
+                  <span id="c-count" class="font-caption text-caption text-text-secondary" aria-live="polite">0 / 1000</span>
+                </div>
+              </div>
+              <!-- Jebakan bot (honeypot) — jangan diisi -->
+              <div class="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
+                <label for="c-web">Situs web</label><input id="c-web" name="website" type="text" tabindex="-1" autocomplete="off">
+              </div>
+              <button id="c-submit" type="submit" class="btn-yellow w-full py-3.5 px-space-xl hover:-translate-y-0.5">
+                <span>Kirim Pesan</span><span class="ms text-[20px]">send</span>
+              </button>
+              <p class="font-caption text-caption text-text-secondary text-center">Data Anda hanya dipakai untuk membalas pesan ini. <button type="button" class="underline hover:text-brand-blue" data-open="privasi">Kebijakan privasi</button></p>
+            </form>
+            <div id="c-err" hidden role="alert" class="mt-space-md p-space-md rounded-xl bg-error-container text-on-error-container flex items-center gap-space-sm font-body-sm text-body-sm">
+              <span class="ms text-[20px]">error</span><span id="c-err-msg"></span>
+            </div>
+            <div id="c-ok" hidden role="status" class="mt-space-md p-space-md rounded-xl bg-success-container text-success flex items-center gap-space-sm font-body-sm text-body-sm">
+              <span class="ms ms-fill text-[20px]">check_circle</span><span id="c-ok-msg"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ F9 FOOTER ============ -->
+<footer class="w-full bg-brand-navy text-surface-white">
+  <div class="wrap pt-space-2xl lg:pt-space-3xl pb-space-xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl pb-space-xl lg:pb-space-2xl">
+      <div class="space-y-space-md">
+        <div class="flex items-center gap-space-sm">
+          <span id="foot-mark" class="w-9 h-9 rounded-xl bg-surface-white text-brand-navy flex items-center justify-center font-extrabold text-[18px]" aria-hidden="true">F</span>
+          <span id="foot-name" class="font-headline-sm text-headline-sm tracking-tight">&nbsp;</span>
+        </div>
+        <p id="foot-tagline" class="font-body-sm text-body-sm text-secondary-fixed-dim leading-relaxed"></p>
+      </div>
+      <div>
+        <p class="font-label-caps text-label-caps uppercase tracking-wider text-yellow-accent mb-space-md">Menu Cepat</p>
+        <ul class="space-y-space-sm font-body-sm text-body-sm text-secondary-fixed-dim">
+          <li><a class="hover:text-surface-white transition-colors" href="#beranda">Home</a></li>
+          <li><a class="hover:text-surface-white transition-colors" href="#tentang">About</a></li>
+          <li><a class="hover:text-surface-white transition-colors" href="#keahlian">Skills</a></li>
+          <li><a class="hover:text-surface-white transition-colors" href="#portofolio">Portfolio</a></li>
+          <li><a class="hover:text-surface-white transition-colors" href="#kontak">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-label-caps text-label-caps uppercase tracking-wider text-yellow-accent mb-space-md">Kontak &amp; Kolaborasi</p>
+        <ul id="foot-contact" class="space-y-space-sm font-body-sm text-body-sm text-secondary-fixed-dim"></ul>
+      </div>
+      <div>
+        <p class="font-label-caps text-label-caps uppercase tracking-wider text-yellow-accent mb-space-md">Ketersediaan Proyek</p>
+        <div class="bg-surface-white/5 p-space-md rounded space-y-space-sm">
+          <div class="flex items-center gap-space-xs text-bright-blue font-label-ui text-label-ui"><span class="ms text-[18px]">verified</span><span id="foot-status">&nbsp;</span></div>
+          <p id="foot-status-ket" class="font-caption text-caption text-secondary-fixed-dim"></p>
+        </div>
+      </div>
+    </div>
+    <div class="pt-space-lg border-t border-surface-white/10 flex flex-col md:flex-row items-center justify-between gap-space-md font-caption text-caption text-secondary-fixed-dim">
+      <p id="foot-copy">&nbsp;</p>
+      <button type="button" class="hover:text-surface-white transition-colors" data-open="privasi">Privasi</button>
+    </div>
+  </div>
+</footer>
+
+<dialog id="privasi" class="dlg" aria-labelledby="privasi-h">
+  <div class="p-6 sm:p-8">
+    <div class="flex items-start justify-between gap-4 mb-4">
+      <h2 id="privasi-h" class="font-headline-sm text-headline-sm text-brand-navy">Kebijakan Privasi Singkat</h2>
+      <button type="button" class="p-1 rounded-full hover:bg-light-blue-tint" data-close aria-label="Tutup"><span class="ms">close</span></button>
+    </div>
+    <div class="space-y-3 font-body-sm text-body-sm text-text-secondary">
+      <p><strong class="text-brand-navy">Formulir kontak.</strong> Nama, email, dan pesan Anda disimpan agar bisa dibalas, dan tidak dibagikan ke pihak lain.</p>
+      <p><strong class="text-brand-navy">Statistik anonim.</strong> Situs mencatat jumlah kunjungan dan klik (jenis perangkat & sumber rujukan) tanpa nama, email, atau alamat IP.</p>
+      <p><strong class="text-brand-navy">Penyimpanan lokal.</strong> Browser Anda menyimpan salinan konten publik dan ID acak perangkat agar halaman tampil instan dan formulir terlindung dari spam.</p>
+      <p>Ingin data Anda dihapus? Kirim permintaan lewat formulir kontak.</p>
+    </div>
+  </div>
+</dialog>
+
+<div id="maint" hidden class="fixed inset-0 z-[150] bg-gradient-to-b from-light-blue-tint to-surface-white flex items-center justify-center p-6">
+  <div class="card max-w-md w-full p-8 text-center">
+    <div class="w-16 h-16 mx-auto rounded-2xl bg-yellow-accent text-brand-navy flex items-center justify-center mb-4"><span class="ms text-[32px]">construction</span></div>
+    <h1 id="maint-h" class="font-headline-md text-headline-md text-brand-navy mb-2">Sedang diperbarui</h1>
+    <p id="maint-msg" class="font-body-md text-body-md text-text-secondary"></p>
+    <a id="maint-mail" href="#" class="btn-primary mt-6" hidden><span class="ms text-[18px]">mail</span><span>Hubungi lewat email</span></a>
+  </div>
+</div>
+</body>
+</html>

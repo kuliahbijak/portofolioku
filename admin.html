@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com/gsi/client https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com/gsi/style; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src https://script.google.com https://script.googleusercontent.com https://accounts.google.com/gsi/; frame-src https://accounts.google.com/gsi/; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Admin Portal</title>
+<meta name="theme-color" content="#0B1F3A">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://script.google.com" crossorigin>
+<link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&amp;icon_names=account_circle,account_tree,add,admin_panel_settings,ads_click,alternate_email,analytics,animation,api,apps,arrow_back,arrow_downward,arrow_forward,arrow_outward,arrow_upward,article,autorenew,backup,bar_chart,block,bolt,brush,build,cached,calendar_today,call,campaign,chat,check_circle,chevron_left,chevron_right,close,cloud_done,cloud_off,cloud_sync,code,construction,contact_page,content_copy,dashboard,data_object,database,delete,description,design_services,devices,download,draw,edit,error,extension,favorite,folder,format_quote,forum,functions,gate,gif,grid_view,group,groups,handshake,help,hourglass_top,hov,hub,inbox,info,input,integration_instructions,interests,key,label,language,layers,lightbulb,link,location_on,lock,lock_open,lock_reset,login,logout,mail,mark_email_read,mark_email_unread,memory,menu,mobile,move_up,movie,music_note,notifications,open_in_new,palette,password,payments,person,photo_camera,picture_as_pdf,pill,play_circle,progress_activity,psychology,public,radio,record_voice_over,refresh,reply,resize,rocket_launch,rss_feed,save,scan,schedule,school,script,sd,search,security,send,settings,share,shield,shopping_cart,smart_toy,speed,star,start,storage,storefront,switch,sync,table_chart,table_view,tablet,target,terminal,touch_app,translate,travel_explore,trending_down,trending_up,upload,verified,video_library,visibility,visibility_off,vpn_key,warning,web,wifi_off,work&amp;display=block">
+<link rel="stylesheet" href="css/app.css?v=1.0.0">
+<script src="js/config.js?v=1.0.0" defer></script>
+<script src="js/core.js?v=1.0.0" defer></script>
+<script src="js/admin-views.js?v=1.0.0" defer></script>
+<script src="js/admin.js?v=1.0.0" defer></script>
+</head>
+<body class="bg-background">
+
+<!-- Layar awal: dibiarkan netral (tidak menyebut "admin") sampai sesi/tiket diperiksa -->
+<div id="boot" class="fixed inset-0 z-[300] bg-background flex items-center justify-center">
+  <span class="ms text-[36px] text-brand-blue spin">progress_activity</span>
+</div>
+
+<!-- ================= LOGIN ================= -->
+<section id="login" hidden class="min-h-screen bg-gradient-to-b from-light-blue-tint via-surface-white to-warm-cream flex items-center justify-center p-5 relative overflow-hidden">
+  <div class="absolute -top-24 -right-24 w-80 h-80 bg-yellow-accent/25 rounded-full blur-3xl" aria-hidden="true"></div>
+  <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-bright-blue/15 rounded-full blur-3xl" aria-hidden="true"></div>
+  <div class="relative w-full max-w-[420px] card p-7 sm:p-9">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="w-11 h-11 rounded-xl bg-brand-navy text-yellow-accent flex items-center justify-center"><span class="ms">admin_panel_settings</span></span>
+      <div><p class="font-label-caps text-label-caps uppercase text-tertiary">Admin Portal</p><h1 class="font-headline-sm text-headline-sm text-brand-navy">Masuk sebagai Super Admin</h1></div>
+    </div>
+    <p id="login-hint" class="font-body-sm text-body-sm text-text-secondary mb-5">Gunakan akun Google pemilik situs.</p>
+    <div id="login-google" class="min-h-[44px] flex justify-center"></div>
+    <div id="login-noclient" hidden class="p-4 rounded-2xl bg-soft-yellow text-brand-navy font-body-sm text-body-sm">
+      <b>Client ID OAuth belum diisi.</b> Masuk dengan akses darurat, lalu isi di <i>Pengaturan → Keamanan</i>, atau isi <code>OAUTH_CLIENT_ID</code> di Script Properties.
+    </div>
+    <div id="login-msg" hidden role="alert" class="mt-4 p-3 rounded-xl bg-error-container text-on-error-container font-body-sm text-body-sm flex gap-2"><span class="ms text-[20px]">error</span><span></span></div>
+    <div class="my-6 flex items-center gap-3 text-outline font-caption text-caption" id="login-sep"><span class="flex-1 h-px bg-border-subtle"></span>atau<span class="flex-1 h-px bg-border-subtle"></span></div>
+    <button id="darurat-toggle" type="button" class="w-full btn-ghost py-2.5 font-label-ui"><span class="ms text-[18px]">key</span>Gunakan akses darurat</button>
+    <form id="darurat-form" hidden class="space-y-3 mt-2" autocomplete="on">
+      <label class="block"><span class="block font-label-ui text-label-ui text-brand-navy mb-1">Nama pengguna</span>
+        <input name="username" class="field !rounded-[10px] px-4 py-3" autocomplete="username" required></label>
+      <label class="block"><span class="block font-label-ui text-label-ui text-brand-navy mb-1">Kata sandi darurat</span>
+        <input name="password" type="password" class="field !rounded-[10px] px-4 py-3" autocomplete="current-password" required></label>
+      <button type="submit" class="btn-navy w-full py-3"><span class="ms text-[18px]">lock_open</span><span>Masuk</span></button>
+    </form>
+    <p class="mt-6 font-caption text-caption text-text-secondary text-center">Tiket masuk berlaku <span id="login-ttl">15 menit</span>. Halaman ini tidak ditautkan dari situs publik.</p>
+  </div>
+</section>
+
+<!-- ================= APLIKASI ADMIN ================= -->
+<div id="app" hidden>
+  <!-- Sidebar (laptop) / laci (tablet & ponsel) -->
+  <div id="drawer-bg" class="fixed inset-0 bg-brand-navy/50 z-[55] hidden lg:hidden"></div>
+  <aside id="side" class="fixed left-0 top-0 h-full w-[260px] bg-brand-navy z-[60] flex flex-col -translate-x-full lg:translate-x-0 transition-transform duration-200" aria-label="Menu admin">
+    <div class="h-16 px-4 flex items-center justify-between border-b border-surface-white/10">
+      <div class="flex items-center gap-2 min-w-0"><span id="side-name" class="font-headline-sm text-headline-sm text-surface-white tracking-tight truncate">Portofolio</span></div>
+      <span class="bg-surface-white/10 text-yellow-accent font-label-caps text-[11px] px-2 py-0.5 rounded-full whitespace-nowrap">ADMIN PORTAL</span>
+    </div>
+    <nav id="side-nav" class="flex-1 overflow-y-auto px-2 py-3 space-y-1"></nav>
+    <div class="p-2 border-t border-surface-white/10">
+      <button type="button" data-act="logout" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-outline-variant hover:bg-error/15 hover:text-[#ffb4ab] transition-colors"><span class="ms text-[20px]">logout</span><span class="font-label-ui text-label-ui">Keluar</span></button>
+    </div>
+  </aside>
+
+  <div class="lg:pl-[260px]">
+    <header class="sticky top-0 h-16 bg-surface-white/95 backdrop-blur shadow-nav z-40 flex items-center justify-between px-3 sm:px-space-lg gap-3">
+      <div class="flex items-center gap-2 min-w-0">
+        <button type="button" data-act="drawer" class="lg:hidden p-2 rounded-full text-brand-navy hover:bg-surface-container-low" aria-label="Buka menu"><span class="ms">menu</span></button>
+        <div class="min-w-0">
+          <div class="flex items-center gap-1.5 font-caption text-caption text-text-secondary"><span class="font-medium">Portal</span><span class="ms text-[12px]">chevron_right</span><span id="crumb" class="text-brand-blue font-semibold truncate">Beranda</span></div>
+          <p class="font-body-sm text-body-sm text-text-secondary truncate hidden sm:block">Selamat datang kembali, <span id="hello" class="font-semibold text-text-primary"></span></p>
+        </div>
+      </div>
+      <div class="flex items-center gap-1 sm:gap-space-md">
+        <span id="sync" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-caption text-caption bg-success-container text-success" aria-live="polite"><span class="ms text-[16px]">cloud_done</span><span>Tersinkron</span></span>
+        <a href="./" target="_blank" rel="noopener" class="hidden md:flex items-center gap-1 px-3 py-1.5 rounded-full text-brand-blue hover:bg-light-blue-tint transition-colors font-label-ui text-label-ui">Lihat Situs<span class="ms text-[16px]">open_in_new</span></a>
+        <button type="button" data-go="pesan" class="relative p-2 rounded-full text-text-secondary hover:bg-surface-container-low" aria-label="Pesan masuk"><span class="ms text-[22px]">notifications</span><span id="bell-dot" hidden class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span></button>
+        <div class="hidden sm:flex items-center gap-2 pl-3 border-l border-border-subtle">
+          <img id="me-foto" alt="" class="w-8 h-8 rounded-full object-cover bg-brand-blue" width="32" height="32" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
+          <div class="flex flex-col"><span id="me-email" class="font-label-ui text-label-ui text-text-primary leading-tight max-w-[180px] truncate"></span><span id="me-role" class="font-caption text-caption text-brand-blue font-bold tracking-wide">Super Admin</span></div>
+        </div>
+      </div>
+    </header>
+    <div id="banner" hidden></div>
+    <main id="view" class="px-3 sm:px-space-lg py-space-md pb-28 lg:pb-space-2xl min-h-[calc(100vh-4rem)]" tabindex="-1"></main>
+  </div>
+
+  <!-- Navigasi bawah (ponsel) -->
+  <nav id="bottom-nav" class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface-white border-t border-border-subtle grid grid-cols-5 pb-[env(safe-area-inset-bottom)]" aria-label="Navigasi bawah"></nav>
+</div>
+
+<dialog id="dlg" class="dlg"></dialog>
+<dialog id="dlg2" class="dlg !w-[min(420px,calc(100vw-2rem))]"></dialog>
+</body>
+</html>
